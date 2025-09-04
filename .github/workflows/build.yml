@@ -27,6 +27,14 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
+      - name: Disable recursive ndisc6 in defconfig
+        run: |
+          if grep -q "CONFIG_PACKAGE_ndisc6=y" defconfig/mt7981-ax3000-openfi6c.config; then
+            echo "Disabling ndisc6 to prevent recursion..."
+            sed -i 's/CONFIG_PACKAGE_ndisc6=y/# CONFIG_PACKAGE_ndisc6 is not set/' defconfig/mt7981-ax3000-openfi6c.config
+          fi
+
+
       # 4. Копируем свой defconfig
       - name: Apply defconfig
         run: |

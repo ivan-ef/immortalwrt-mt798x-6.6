@@ -40,11 +40,6 @@ jobs:
         run: |
           cp defconfig/mt7981-ax3000-openfi6c.config .config
           make defconfig
-          
-      - name: Debug target feed errors
-        if: failure() || always()
-        run: |
-          find logs/ -type f -name "*.txt" -exec echo "===== {} =====" \; -exec cat {} \; 
 
       # 5. Сборка
       - name: Build OpenWrt

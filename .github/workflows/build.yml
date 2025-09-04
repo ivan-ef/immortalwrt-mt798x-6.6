@@ -45,7 +45,7 @@ jobs:
 
       # 6. Публикуем артефакты сборки
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: ctions/upload-artifact@v4
         with:
           name: openwrt-firmware
           path: bin/targets/

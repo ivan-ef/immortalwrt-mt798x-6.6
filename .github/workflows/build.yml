@@ -1,9 +1,6 @@
 name: Build OpenWrt MT7981
 
 on:
-  push:
-    branches:
-      - main  # замените на нужную ветку
   workflow_dispatch:
 
 jobs:
@@ -36,15 +33,15 @@ jobs:
 
 
       # 4. Копируем свой defconfig
-      - name: Apply defconfig
-        run: |
-          cp defconfig/mt7981-ax3000-openfi6c.config .config
-          make defconfig
+      #- name: Apply defconfig
+      #  run: |
+      #    cp defconfig/mt7981-ax3000-openfi6c.config .config
+      #    make defconfig
 
       # 5. Сборка
       - name: Build OpenWrt
         run: |
-          make
+          make V=sc
 
       # 6. Публикуем артефакты сборки
       - name: Upload build artifacts

@@ -25,7 +25,7 @@ jobs:
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
-          ./scripts/feeds install -a
+          ./scripts/feeds install -a -f
 
       - name: Disable recursive ndisc6 in defconfig
         run: |
